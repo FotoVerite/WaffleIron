@@ -42,6 +42,8 @@ test('Iron.createMachine()', function() {
 test('Iron.initMachine()', function() {
   Iron.createMachine({'name': 'aMachine', 'states': ["init", "forward"], 'transitions': {}, "initialState": "forward"});
   Iron.createMachine({'name': 'anotherMachine', 'states': ["plused", "minused"], 'transitions': {}, "initialState": "plused"});
+  var elem, succeedElem, markupElem, mulitElem, badMachineMarkupElm, badStateMarkupElm;
+  
   elem = $('#failTest');
   succeedElem = $('#succeedTest');
   markupElem = $('#markupTest');
