@@ -123,96 +123,96 @@
     
     // Data Methods
     
-  	cache: {},
-	
-  	expando:expando,
+  cache: {},
 
-  	// The following elements throw uncatchable exceptions if you
-  	// attempt to add expando properties to them.
-  	noData: {
-  		"embed": true,
-  		"object": true,
-  		"applet": true
-  	},
+  expando:expando,
 
-  	data: function( elem, name, data ) {
-  	  elem = Iron.cleanElem(elem);
-  		if (elem.nodeName && Iron.noData[elem.nodeName.toLowerCase()] ) {
-  			return;
-  		}
+  // The following elements throw uncatchable exceptions if you
+  // attempt to add expando properties to them.
+  noData: {
+  "embed": true,
+  "object": true,
+  "applet": true
+  },
 
-  		elem = elem == window ?
-  			windowData :
-  			elem;
+  data: function( elem, name, data ) {
+    elem = Iron.cleanElem(elem);
+  if (elem.nodeName && Iron.noData[elem.nodeName.toLowerCase()] ) {
+  return;
+  }
 
-  		var id = elem[ expando ], cache = Iron.cache, thisCache;
+  elem = elem == window ?
+  windowData :
+  elem;
 
-  		if ( !id && typeof name === "string" && data === undefined ) {
-  			return null;
-  		}
+  var id = elem[ expando ], cache = Iron.cache, thisCache;
 
-  		// Compute a unique ID for the element
-  		if ( !id ) { 
-  			id = ++uuid;
-  		}
+  if ( !id && typeof name === "string" && data === undefined ) {
+  return null;
+  }
 
-  		// Avoid generating a new cache unless none exists and we
-  		// want to manipulate it.
-  		if ( typeof name === "object" ) {
-  			elem[ expando ] = id;
-  			thisCache = cache[ id ] = Iron.extend(true, {}, name);
+  // Compute a unique ID for the element
+  if ( !id ) { 
+  id = ++uuid;
+  }
 
-  		} else if ( !cache[ id ] ) {
-  			elem[ expando ] = id;
-  			cache[ id ] = {};
-  		}
+  // Avoid generating a new cache unless none exists and we
+  // want to manipulate it.
+  if ( typeof name === "object" ) {
+  elem[ expando ] = id;
+  thisCache = cache[ id ] = Iron.extend(true, {}, name);
 
-  		thisCache = cache[ id ];
+  } else if ( !cache[ id ] ) {
+  elem[ expando ] = id;
+  cache[ id ] = {};
+  }
 
-  		// Prevent overriding the named cache with undefined values
-  		if ( data !== undefined ) {
-  			thisCache[ name ] = data;
-  		}
+  thisCache = cache[ id ];
 
-  		return typeof name === "string" ? thisCache[ name ] : thisCache;
-  	},
+  // Prevent overriding the named cache with undefined values
+  if ( data !== undefined ) {
+  thisCache[ name ] = data;
+  }
 
-  	removeData: function(elem, name ) {
-  	  elem = Iron.cleanElem(elem);
-  		if ( elem.nodeName && Iron.noData[nodeName.toLowerCase()] ) {
-  			return;
-  		}
+  return typeof name === "string" ? thisCache[ name ] : thisCache;
+  },
 
-  		elem = elem == window ?
-  			windowData :
-  			elem;
+  removeData: function(elem, name ) {
+    elem = Iron.cleanElem(elem);
+  if ( elem.nodeName && Iron.noData[nodeName.toLowerCase()] ) {
+  return;
+  }
 
-  		var id = elem[ expando ], cache = Iron.cache, thisCache = cache[ id ];
+  elem = elem == window ?
+  windowData :
+  elem;
 
-  		// If we want to remove a specific section of the element's data
-  		if ( name ) {
-  			if ( thisCache ) {
-  				// Remove the section of cache data
-  				delete thisCache[ name ];
+  var id = elem[ expando ], cache = Iron.cache, thisCache = cache[ id ];
 
-  				// If we've removed all the data, remove the element's cache
-  				if ( Iron.isEmptyObject(thisCache) ) {
-  					Iron.removeData( elem );
-  				}
-  			}
+  // If we want to remove a specific section of the element's data
+  if ( name ) {
+  if ( thisCache ) {
+  // Remove the section of cache data
+  delete thisCache[ name ];
 
-  		// Otherwise, we want to remove all of the element's data
-  		} else {
-  			if ( true ) {
-  				delete elem[ Iron.expando ];
+  // If we've removed all the data, remove the element's cache
+  if ( Iron.isEmptyObject(thisCache) ) {
+  Iron.removeData( elem );
+  }
+  }
 
-  			} else if ( elem.removeAttribute ) {
-  				elem.removeAttribute( Iron.expando );
-  			}
+  // Otherwise, we want to remove all of the element's data
+  } else {
+  if ( true ) {
+  delete elem[ Iron.expando ];
 
-  			// Completely remove the data cache
-  			delete cache[ id ];
-  		}
-  	}
+  } else if ( elem.removeAttribute ) {
+  elem.removeAttribute( Iron.expando );
+  }
+
+  // Completely remove the data cache
+  delete cache[ id ];
+  }
+  }
   };
 })();
