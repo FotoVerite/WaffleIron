@@ -1,14 +1,15 @@
 module('WaffleIron');
 
-test('Iron.data()', function() {
-    elem= $('#succeedTest');
-    basicElem = window.document.getElementById('succeedTest')
-    equals(Iron.data(elem, "name"), null, "data for an element should be null at the start");
-    Iron.data(elem, "name", "data") ;
-    equals(Iron.data(elem, "name"),"data", "data can be set by the data function");
-    Iron.data(elem, "name", "new-data") ;
-    equals(Iron.data(elem, "name"), "new-data", "data can be overwritten");
-    equals(Iron.data(basicElem, "name"), "new-data", "jQuery elements should have data set to the node itself");
+test('Iron.data()', function test_data() {
+  var elem, basicElem;
+  elem = $('#succeedTest');
+  basicElem = window.document.getElementById('succeedTest');
+  equals(Iron.data(elem, "name"), null, "data for an element should be null at the start");
+  Iron.data(elem, "name", "data");
+  equals(Iron.data(elem, "name"),"data", "data can be set by the data function");
+  Iron.data(elem, "name", "new-data");
+  equals(Iron.data(elem, "name"), "new-data", "data can be overwritten");
+  equals(Iron.data(basicElem, "name"), "new-data", "jQuery elements should have data set to the node itself");
 });
 
 test('Iron.createMachine()', function() {
