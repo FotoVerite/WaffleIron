@@ -111,6 +111,7 @@
     },
 
     // Data Methods
+<<<<<<< HEAD
 
     cache: {},
 
