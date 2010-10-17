@@ -111,8 +111,6 @@
     },
 
     // Data Methods
-<<<<<<< HEAD
-
     cache: {},
 
     // The following elements throw uncatchable exceptions if you
